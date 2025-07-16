@@ -147,13 +147,12 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         self.imageView.layer.cornerRadius = 20
         self.imageView.layer.borderColor = UIColor.clear.cgColor
     }
-    // Конец класса
+
 }
 
 
-// MARK: - CLASS EXTENSIONS
+// MARK: - CLASS UI COllor
 
-// НАСТРОЙКА ВЫЗОВА ЦВЕТОВ
 extension UIColor {
     static var ypBlack: UIColor { UIColor(named: "YP Black") ?? UIColor(red: 0.102, green: 0.106, blue: 0.133, alpha: 1) }
     static var ypWhite: UIColor { UIColor(named: "YP White") ?? UIColor(red: 1, green: 1, blue: 1, alpha: 1) }
