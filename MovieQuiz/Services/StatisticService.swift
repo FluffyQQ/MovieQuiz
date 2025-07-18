@@ -4,16 +4,16 @@ final class StatisticServiceImplementation: StatisticServiceProtocol {
     private let storage: UserDefaults = .standard
     
     private enum Keys: String {
-        case correct
-        case total
-        case date
+        case bestGameCorrectAnswersCount
+        case bestGameTotalAnswersCount
+        case bestGameDate
         case gamesCount
         case totalCorrectAnswers
         case totalQuestions
     }
     
     var totalAccuracy: Double {
-        let correctAnswers: Int = storage.integer(forKey: Keys.correct.rawValue)
+        let correctAnswers: Int = storage.integer(forKey: Keys.bestGameCorrectAnswersCount.rawValue)
         let totalAccuracy: Double = (Double(correctAnswers) / (10.0 * Double(gamesCount))) * 100
         
         guard totalAccuracy > 0 else { return 0.0 }
@@ -32,16 +32,16 @@ final class StatisticServiceImplementation: StatisticServiceProtocol {
     
     var bestGame: GameResult {
         get {
-            let correct = storage.integer(forKey: Keys.correct.rawValue)
-            let total = storage.integer(forKey: Keys.total.rawValue)
-            let date = storage.object(forKey: Keys.date.rawValue) as? Date ?? Date()
+            let correct = storage.integer(forKey: Keys.bestGameCorrectAnswersCount.rawValue)
+            let total = storage.integer(forKey: Keys.bestGameTotalAnswersCount.rawValue)
+            let date = storage.object(forKey: Keys.bestGameDate.rawValue) as? Date ?? Date()
             
             return GameResult(correct: correct, total: total, date: date)
         }
         set {
-            storage.set(newValue.correct, forKey: Keys.correct.rawValue)
-            storage.set(newValue.total, forKey: Keys.total.rawValue)
-            storage.set(newValue.date, forKey: Keys.date.rawValue)
+            storage.set(newValue.correct, forKey: Keys.bestGameCorrectAnswersCount.rawValue)
+            storage.set(newValue.total, forKey: Keys.bestGameTotalAnswersCount.rawValue)
+            storage.set(newValue.date, forKey: Keys.bestGameDate.rawValue)
         }
     }
     

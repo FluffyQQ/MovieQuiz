@@ -87,11 +87,11 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
             self.statisticService?.store(correct: self.correctAnswers, total: self.questionsAmount)
             guard let bestGame = self.statisticService?.bestGame else { return }
             let statsText = """
-Ваш результат: \(self.correctAnswers)/\(self.questionsAmount)
-Количество сыгранных квизов: \(self.statisticService?.gamesCount ?? 0)
-Рекорд: \(bestGame.correct)/\(bestGame.total) (\(bestGame.date.dateTimeString))
-Средняя точность: \(String(format: "%.2f", self.statisticService?.totalAccuracy ?? 0))%
-"""
+                Ваш результат: \(self.correctAnswers)/\(self.questionsAmount)
+                Количество сыгранных квизов: \(self.statisticService?.gamesCount ?? 0)
+                Рекорд: \(bestGame.correct)/\(bestGame.total) (\(bestGame.date.dateTimeString))
+                Средняя точность: \(String(format: "%.2f", self.statisticService?.totalAccuracy ?? 0))%
+                """
             let quizResult = AlertModel(
                 title: "Этот раунд окончен!",
                 message: statsText,
@@ -108,6 +108,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         }
         else
         {
+            self.imageBorderDefaultStyle()
             self.currentQuestionIndex += 1
             self.questionFactory?.requestNextQuestion()
         }
