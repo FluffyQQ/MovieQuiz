@@ -39,6 +39,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="1/10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8p-1N-U1g" userLabel="Index Label">
                                                 <rect key="frame" x="338" y="0.0" width="36" height="23.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Index"/>
                                                 <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="20"/>
                                                 <color key="textColor" name="ypWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -48,6 +49,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="zMU-M6-RtJ" userLabel="Preview Image">
                                         <rect key="frame" x="0.0" y="43.5" width="374" height="479"/>
                                         <color key="backgroundColor" name="ypWhite"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Poster"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="zMU-M6-RtJ" secondAttribute="height" multiplier="2:3" id="ntn-NU-jW8"/>
                                         </constraints>
@@ -75,6 +77,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgf-fx-kgQ" userLabel="No Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="177" height="60"/>
                                                 <color key="backgroundColor" name="ypWhite"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="No"/>
                                                 <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="20"/>
                                                 <color key="tintColor" name="ypBlack"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -93,6 +96,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cis-86-yDb" userLabel="Yes Button">
                                                 <rect key="frame" x="197" y="0.0" width="177" height="60"/>
                                                 <color key="backgroundColor" name="ypWhite"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Yes"/>
                                                 <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="20"/>
                                                 <color key="tintColor" name="ypBlack"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -115,8 +119,8 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="large" color="whiteColor" translatesAutoresizingMaskIntoConstraints="NO" id="activityIndicator">
-                                <rect key="frame" x="197" y="428" width="40" height="40"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="activityIndicator">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oQE-fi-n9f"/>
@@ -125,18 +129,18 @@
                             <constraint firstItem="oQE-fi-n9f" firstAttribute="bottom" secondItem="H8w-Tv-Usi" secondAttribute="bottom" id="OFE-YS-5Nj"/>
                             <constraint firstItem="H8w-Tv-Usi" firstAttribute="top" secondItem="oQE-fi-n9f" secondAttribute="top" constant="10" id="aXB-GJ-xPl"/>
                             <constraint firstItem="oQE-fi-n9f" firstAttribute="trailing" secondItem="H8w-Tv-Usi" secondAttribute="trailing" constant="20" id="aur-Du-Ux8"/>
-                            <constraint firstItem="H8w-Tv-Usi" firstAttribute="leading" secondItem="oQE-fi-n9f" secondAttribute="leading" constant="20" id="kq2-CG-CGG"/>
                             <constraint firstItem="activityIndicator" firstAttribute="centerX" secondItem="iNt-ec-W4b" secondAttribute="centerX" id="centerX-activityIndicator"/>
                             <constraint firstItem="activityIndicator" firstAttribute="centerY" secondItem="iNt-ec-W4b" secondAttribute="centerY" id="centerY-activityIndicator"/>
+                            <constraint firstItem="H8w-Tv-Usi" firstAttribute="leading" secondItem="oQE-fi-n9f" secondAttribute="leading" constant="20" id="kq2-CG-CGG"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="activityIndicator" id="outlet-activityIndicator"/>
                         <outlet property="counterLabel" destination="J8p-1N-U1g" id="cN4-he-fCi"/>
                         <outlet property="imageView" destination="zMU-M6-RtJ" id="WCk-er-pIb"/>
                         <outlet property="noButton" destination="wgf-fx-kgQ" id="7pF-DL-Fct"/>
                         <outlet property="textLabel" destination="p9o-hR-OM7" id="tmf-mu-6uU"/>
                         <outlet property="yesButton" destination="cis-86-yDb" id="YSx-t6-bsu"/>
-                        <outlet property="activityIndicator" destination="activityIndicator" id="outlet-activityIndicator"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0gs-Mn-NiJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
