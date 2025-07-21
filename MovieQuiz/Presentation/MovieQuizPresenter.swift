@@ -131,8 +131,8 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         
         viewController?.highlightImageBorder(isCorrectAnswer: isCorrect)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.proceedToNextQuestionOrResults()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self?.proceedToNextQuestionOrResults()
         }
     }
 }

@@ -95,4 +95,6 @@ class MovieQuizUITests: XCTestCase {
         XCTAssertFalse(alertResult.exists)
         XCTAssertTrue(indexLabel.label == "1/10")
     }
+    
+    
 }

@@ -21,13 +21,13 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
         presenter = MovieQuizPresenter(viewController: self)
         alertPresenter = AlertPresenter(viewController: self)
         
-        imageView.layer.cornerRadius = 20
         activityIndicator.hidesWhenStopped = true
+        imageBorderDefaultStyle()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        imageBorderDefaultStyle()
+        // imageBorderDefaultStyle()
     }
 
     // MARK: - Actions
@@ -59,7 +59,8 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
             completion: { [weak self] in
                 guard let self = self else { return }
                 self.presenter.restartGame()
-            }
+            },
+            accessibilityIdentifier: "Game results"
         )
         
         alertPresenter?.showAlert(model: alert)
@@ -73,12 +74,10 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     }
     
     func showLoadingIndicator() {
-        activityIndicator.isHidden = false
         activityIndicator.startAnimating()
     }
     
     func hideLoadingIndicator() {
-        activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
     }
     
@@ -92,7 +91,8 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
             completion: { [weak self] in
                 guard let self = self else { return }
                 self.presenter.restartGame()
-            }
+            },
+            accessibilityIdentifier: "NetworkErrorAlert"
         )
         
         alertPresenter?.showAlert(model: alert)
