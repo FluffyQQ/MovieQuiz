@@ -5,9 +5,12 @@ protocol MoviesLoading {
 }
 
 struct MoviesLoader: MoviesLoading {
-    // MARK: - Network
-    
-    private let networkClient = NetworkClient()
+    // MARK: - NetworkClient
+    private let networkClient: NetworkRouting
+      
+    init(networkClient: NetworkRouting = NetworkClient()) {
+        self.networkClient = networkClient
+    }
     
     // MARK: - API URL
     
@@ -24,7 +27,12 @@ struct MoviesLoader: MoviesLoading {
             case .success(let data):
                 do {
                     let mostPopularMovies = try JSONDecoder().decode(MostPopularMovies.self, from: data)
-                    handler(.success(mostPopularMovies))
+                    
+                    if !mostPopularMovies.errorMessage.isEmpty {
+                        handler(.failure(NetworkClient.NetworkError.errorMessage(mostPopularMovies.errorMessage)))
+                    } else {
+                        handler(.success(mostPopularMovies))
+                    }
                 } catch {
                     handler(.failure(error))
                 }
@@ -33,4 +41,4 @@ struct MoviesLoader: MoviesLoading {
             }
         }
     }
-} 
+}
